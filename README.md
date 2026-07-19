@@ -3,7 +3,7 @@
 A comprehensive, high-fidelity dashboard replication built using **Next.js (App Router)**, **TypeScript**, **Tailwind CSS**, and **shadcn/ui**. This project implements a fully responsive, data-driven administrative interface adhering to strict grid dimensions, layout alignment boundaries, and cohesive state transitions.
 
 ## 🚀 Live Demo
-* **Production Deployment:** [Insert Vercel URL here]
+* **Production Deployment:** (https://my-material-dashboard-byareeba.vercel.app/)
 * **Source Code:** https://github.com/areebamurtaza/my-material-dashboard
 
 ---
