@@ -213,7 +213,7 @@ export default function DashboardPage() {
       <div 
         className="w-full h-[263px] rounded-[8px] p-[32px] flex flex-col justify-start items-start box-border relative overflow-hidden shadow-none bg-cover bg-no-repeat select-none"
         style={{ 
-          backgroundImage: "url('/hero-bg.JPG')",
+          backgroundImage: "url('/hero-bg.jpg')",
           backgroundPosition: "100% -5px"
         }}
       >
