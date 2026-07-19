@@ -1,10 +1,9 @@
 "use client";
 
 import React, { useState } from 'react';
-import { Check, Download, CreditCard, Bell } from 'lucide-react';
+import { Check, Download, CreditCard } from 'lucide-react';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 
-// --- Mapped Data Arrays for Clean Layout Modularity ---
 const pricingPlans = [
   {
     id: "basic",
@@ -13,7 +12,7 @@ const pricingPlans = [
     description: "Perfect for individuals getting started",
     popular: false,
     cta: "Get Started",
-    btnStyle: "bg-[#F5F5F4] border border-[#E7E5E4] text-[#44403C] hover:bg-[#E7E5E4]",
+    btnStyle: "h-[36px] bg-[#F5F5F4] border border-[#E7E5E4] rounded-[8px] text-[#44403C] hover:bg-[#E7E5E4]",
     cardStyle: "border border-[#E7E5E4]",
     features: [
       { text: "Up to 5 projects", included: true },
@@ -31,8 +30,8 @@ const pricingPlans = [
     description: "Best for growing teams and businesses",
     popular: true,
     cta: "Upgrade Now",
-    btnStyle: "bg-[#1C1917] text-white hover:bg-neutral-800 shadow-sm",
-    cardStyle: "border-2 border-[#1C1917] shadow-md",
+    btnStyle: "h-[38px] bg-gradient-to-b from-[#44403C] to-[#292524] border border-[#1C1917] rounded-[8px] text-[#FAFAF9] shadow-[0px_1px_2px_rgba(0,0,0,0.05),inset_0px_1px_0px_rgba(255,255,255,0.25),inset_0px_2px_0px_rgba(255,255,255,0.35)]",
+    cardStyle: "border-2 border-[#1C1917] shadow-sm",
     features: [
       { text: "Unlimited projects", included: true },
       { text: "100GB storage", included: true },
@@ -49,7 +48,7 @@ const pricingPlans = [
     description: "For large organizations with advanced needs",
     popular: false,
     cta: "Contact Sales",
-    btnStyle: "bg-[#F5F5F4] border border-[#E7E5E4] text-[#44403C] hover:bg-[#E7E5E4]",
+    btnStyle: "h-[36px] bg-[#F5F5F4] border border-[#E7E5E4] rounded-[8px] text-[#44403C] hover:bg-[#E7E5E4]",
     cardStyle: "border border-[#E7E5E4]",
     features: [
       { text: "Unlimited projects", included: true },
@@ -88,7 +87,7 @@ export default function SubscriptionsPage() {
 
       <div className="w-full h-[1px] bg-[#E7E5E4]" />
 
-      {/* --- INDENTED WRAPPER MATRIX FOR INNER Content PANELS --- */}
+      {/* --- INDENTED WRAPPER MATRIX FOR INNER CONTENT PANELS --- */}
       <div className="w-full flex flex-col gap-[32px] pl-[48px] pr-[16px] box-border">
 
         {/* --- SECTION 1: CURRENT SUBSCRIPTION DASHBOARD --- */}
@@ -165,46 +164,49 @@ export default function SubscriptionsPage() {
           </div>
         </div>
 
-        {/* --- SECTION 2: MARKETING PRICING COMPARISON CARDS --- */}
+        {/* --- SECTION 2: FIXED RESPONSIVE GRID PRICING CARDS --- */}
         <div className="w-full relative mt-2">
+          {/* Swapped layout row to a strict grid format to ensure cards scale together with proper bounding gap spacing */}
           <div className="w-full grid grid-cols-3 gap-[24px] items-stretch">
             {pricingPlans.map((plan) => (
               <div 
                 key={plan.id} 
-                className={`w-full bg-white rounded-[12px] p-8 flex flex-col justify-between items-center gap-[28px] box-border relative ${plan.cardStyle}`}
+                className={`bg-white p-6 rounded-[8px] flex flex-col justify-between items-center gap-[24px] box-border relative min-h-[420px] ${plan.cardStyle}`}
               >
-                {/* Floating Most Popular Accent Badge Node Overlay */}
+                {/* Floating "Most Popular" Accent Badge Layer */}
                 {plan.popular && (
-                  <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-[#1C1917] rounded-full h-7 px-4 flex items-center justify-center whitespace-nowrap z-20">
-                    <span className="text-[11px] font-medium text-white uppercase tracking-wider">Most Popular</span>
+                  <div className="absolute -top-[12px] left-1/2 transform -translate-x-1/2 bg-[#1C1917] rounded-[99px] w-[90px] h-[24px] flex flex-row items-center justify-center p-[4px_8px] box-border z-20">
+                    <span className="text-[12px] leading-[16px] font-normal text-white">Most Popular</span>
                   </div>
                 )}
 
-                {/* Tier Pricing Header Metadata Block */}
-                <div className="flex flex-col items-center gap-2 text-center w-full">
-                  <span className="font-semibold text-[18px] leading-[28px] text-[#1C1917]">{plan.name}</span>
-                  <h2 className="font-bold text-[36px] leading-[40px] text-[#1C1917] mt-1">
+                {/* Title Segment Block */}
+                <div className="w-full flex flex-col justify-center items-center gap-[8px] text-center flex-none">
+                  <span className="font-semibold text-[18px] leading-[28px] text-[#1C1917] font-sans">
+                    {plan.name}
+                  </span>
+                  <h2 className="font-bold text-[36px] leading-[40px] text-[#1C1917] font-sans">
                     {plan.price}
-                    <span className="text-[14px] font-normal text-[#78716C] tracking-normal">/month</span>
+                    <span className="text-[14px] font-normal text-[#57534E]">/month</span>
                   </h2>
-                  <p className="text-[14px] leading-[20px] text-[#78716C] mt-1 min-h-[40px] max-w-[240px]">
+                  <p className="text-[14px] leading-[20px] text-[#57534E] font-sans w-full px-2 min-h-[40px]">
                     {plan.description}
                   </p>
                 </div>
 
-                {/* Checklist Matrix Area Mapping (Matches Reference Exactly) */}
-                <div className="w-full flex flex-col gap-3.5 text-left px-2 flex-1 justify-center">
+                {/* Features Checklist Area */}
+                <div className="w-full flex flex-col gap-[12px] text-left self-stretch my-2 flex-1 justify-center">
                   {plan.features.map((feature, i) => (
-                    <div key={i} className="flex flex-row items-start gap-3 w-full">
-                      <div className="w-4 h-5 flex items-center justify-center flex-shrink-0">
+                    <div key={i} className="w-full flex flex-row items-center gap-[12px] self-stretch">
+                      <div className="w-4 h-4 flex items-center justify-center flex-shrink-0 relative">
                         {feature.included ? (
                           <Check size={15} className="text-[#22C55E] stroke-[3]" />
                         ) : (
                           <span className="text-[#A8A29E] font-medium text-[14px] leading-[20px]">—</span>
                         )}
                       </div>
-                      <span className={`text-[14px] leading-[20px] ${
-                        feature.included ? 'text-[#1C1917] font-normal' : 'text-[#A8A29E] font-normal'
+                      <span className={`text-[14px] leading-[20px] font-sans font-normal ${
+                        feature.included ? 'text-[#1C1917]' : 'text-[#78716C]'
                       }`}>
                         {feature.text}
                       </span>
@@ -212,8 +214,8 @@ export default function SubscriptionsPage() {
                   ))}
                 </div>
 
-                {/* Card Action Interactive Plane anchor button */}
-                <button className={`w-full h-[40px] font-normal text-[14px] leading-[20px] rounded-[8px] transition-all flex items-center justify-center mt-2 ${plan.btnStyle}`}>
+                {/* Card Action Button layout anchor */}
+                <button className={`font-sans font-normal text-[14px] leading-[20px] flex flex-row justify-center items-center rounded-[8px] transition-all self-stretch p-[8px_16px] ${plan.btnStyle}`}>
                   {plan.cta}
                 </button>
               </div>
